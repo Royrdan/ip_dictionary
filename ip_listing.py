@@ -11,8 +11,8 @@ import requests
 ##########################   CONFIG   #########################################
 debug = True
 command = "sudo /usr/sbin/arp-scan 192.168.30.0/24" # Set command
-ip_file_dir = "/home/royrdan/Documents/device_ips.yaml"
-errors_file = '/home/royrdan/Documents/python/errors.txt'
+ip_file_dir = "device_ips.yaml"
+errors_file = 'errors.txt'
 errors = []
 
 ################################################################################
@@ -24,7 +24,7 @@ def save_errors_exit():
 
 def open_ip_file():
     try:
-        with open(ip_file_dir, 'r') as myfile:
+        with open(ip_file_dir, 'r+') as myfile:
             read_string = myfile.read()
             return yaml.safe_load(read_string)
     except:
