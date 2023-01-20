@@ -26,10 +26,13 @@ def open_ip_file():
     try:
         with open(ip_file_dir, 'r+') as myfile:
             read_string = myfile.read()
-            return yaml.safe_load(read_string)
+            if len(read_string) == 0:
+                return {}
+            else:
+                return yaml.safe_load(read_string)
     except:
         print("Failed to open ip file")
-        errors.append("Failed to open " + ip_file_dir + " for ip_listing.py")
+        errors.append(f"Failed to open {ip_file_dir} for ip_listing.py")
         save_errors_exit()
 
 def get_devices():
